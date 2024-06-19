@@ -3,9 +3,9 @@ import requests
 
 # Define the API endpoint
 API_URL = "https://whatsapp-he.secretflights.co.il/api/v1/chat/history/session/"
-session_id = '7a367293-7945-4090-a692-eeec72aa279b'
+# session_id = '7a367293-7945-4090-a692-eeec72aa279b'
 
-def get_conversation():
+def get_conversation(session_id):
     try:
         headers = {
             'Accept': 'application/json',
@@ -23,9 +23,9 @@ def get_conversation():
         return None
 
 def main():
-
+    session_id = st.query_params['session_id']
     # Fetch conversation data from the API
-    conversation = get_conversation()
+    conversation = get_conversation(session_id)
 
     if conversation:
         api_payload = conversation
